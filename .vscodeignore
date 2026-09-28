@@ -1,0 +1,7 @@
+.git/**
+.github/**
+.gitignore
+package-lock.json
+**/*.md
+**/*.vsix
+**/*.log

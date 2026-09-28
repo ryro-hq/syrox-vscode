@@ -1,0 +1,24 @@
+{
+  "name": "Syrox",
+  "scopeName": "source.syrox",
+  "patterns": [
+    { "name": "comment.line.double-slash.syrox", "begin": "//", "end": "$" },
+    {
+      "name": "string.quoted.double.syrox", "begin": "\"", "end": "\"|$",
+      "patterns": [
+        { "name": "constant.character.escape.syrox", "match": "\\\\[\"\\\\nrt$]" },
+        { "name": "meta.interpolation.syrox", "begin": "\\$\\{", "end": "\\}",
+          "beginCaptures": { "0": { "name": "punctuation.section.interpolation.begin.syrox" } },
+          "endCaptures": { "0": { "name": "punctuation.section.interpolation.end.syrox" } },
+          "patterns": [{ "name": "variable.other.syrox", "match": "[A-Za-z_][A-Za-z0-9_]*" }] }
+      ]
+    },
+    { "match": "\\b(fn)\\s+([A-Za-z_][A-Za-z0-9_]*)", "captures": { "1": { "name": "keyword.declaration.syrox" }, "2": { "name": "entity.name.function.syrox" } } },
+    { "match": "\\b(struct|enum|type|resource|value)\\s+([A-Za-z_][A-Za-z0-9_]*)", "captures": { "1": { "name": "keyword.declaration.syrox" }, "2": { "name": "entity.name.type.syrox" } } },
+    { "name": "keyword.control.syrox", "match": "\\b(compare|enum|erase|fn|fold|in|inputs|int|let|match|mod|module_exports|memoize|opaque|once|outputs|owner|pub|resource|self|str|struct|type|use|value|where)\\b" },
+    { "name": "constant.numeric.integer.syrox", "match": "\\b[0-9]+\\b" },
+    { "name": "entity.name.function.syrox", "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()" },
+    { "name": "keyword.operator.syrox", "match": "::|->|=>|\\+\\+|\\.\\.=|\\.\\.|[=<>]" },
+    { "name": "punctuation.separator.syrox", "match": "[;:,.]" }
+  ]
+}
