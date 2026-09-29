@@ -11,7 +11,9 @@ let stopping = false;
 
 function within(root, file) {
   const relative = path.relative(root, file);
-  return relative === '' || (!relative.startsWith(`..${path.sep}`) && relative !== '..' && !path.isAbsolute(relative));
+  return relative === '' || (
+    relative !== '..' && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative)
+  );
 }
 
 async function rootFor(document, standardLibraryRoot) {
