@@ -10,7 +10,10 @@ VS Code Remote so that the Linux server and project run in that environment.
 Development: run npm ci in this directory, then start VS Code with
   code --extensionDevelopmentPath=/absolute/path/to/syrox-vscode PROJECT
 
-Checks: npm run check
+Checks: npm ci --ignore-scripts, npm run check, npm run package.
+The tests exercise activation, project-root selection, virtual sources and
+server startup failure with a simulated VS Code host. Packaging creates
+syrox.vsix; neither check starts the real Syrox language server.
 The client requires an external server implementing srx lsp. Both are pre-release.
 The client repository and its releases are independent of the Rust server.
 

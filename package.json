@@ -5,29 +5,94 @@
   "version": "0.1.0",
   "publisher": "ryro-hq",
   "license": "Apache-2.0",
-  "repository": { "type": "git", "url": "https://github.com/ryro-hq/syrox-vscode.git" },
-  "bugs": { "url": "https://github.com/ryro-hq/syrox-vscode/issues" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryro-hq/syrox-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryro-hq/syrox-vscode/issues"
+  },
   "homepage": "https://github.com/ryro-hq/syrox-vscode",
-  "engines": { "vscode": "^1.90.0" },
-  "categories": ["Programming Languages"],
-  "extensionKind": ["workspace"],
-  "activationEvents": ["onLanguage:syrox"],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "activationEvents": [
+    "onLanguage:syrox"
+  ],
   "main": "./extension.js",
-  "scripts": { "check": "node --check extension.js" },
-  "dependencies": { "vscode-languageclient": "9.0.1" },
+  "scripts": {
+    "check": "node --check extension.js && node --test extension.test.cjs",
+    "package": "vsce package --out syrox.vsix"
+  },
+  "dependencies": {
+    "vscode-languageclient": "9.0.1"
+  },
   "contributes": {
-    "languages": [{ "id": "syrox", "aliases": ["Syrox", "syrox"], "extensions": [".srx"], "configuration": "./language-configuration.json" }],
-    "grammars": [{ "language": "syrox", "scopeName": "source.syrox", "path": "./syntaxes/syrox.tmLanguage.json" }],
+    "languages": [
+      {
+        "id": "syrox",
+        "aliases": [
+          "Syrox",
+          "syrox"
+        ],
+        "extensions": [
+          ".srx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "syrox",
+        "scopeName": "source.syrox",
+        "path": "./syntaxes/syrox.tmLanguage.json"
+      }
+    ],
     "configuration": {
       "title": "Syrox",
       "properties": {
-        "syrox.serverPath": { "type": "string", "default": "srx", "scope": "machine-overridable", "description": "Path to srx in the extension host environment. Restart the extension after changing." },
-        "syrox.standardLibraryRoot": { "type": "string", "default": "", "description": "Absolute path to the std source directory for standard-library authoring mode. Restart after changing." },
-        "syrox.inlayHints.types": { "type": "boolean", "default": true, "description": "Show inferred local and pattern types." },
-        "syrox.inlayHints.parameters": { "type": "boolean", "default": true, "description": "Show parameter names at call sites." },
-        "syrox.inlayHints.ownership": { "type": "boolean", "default": false, "description": "Show affine consumption and closure captures." }
+        "syrox.serverPath": {
+          "type": "string",
+          "default": "srx",
+          "scope": "machine-overridable",
+          "description": "Path to srx in the extension host environment. Restart the extension after changing."
+        },
+        "syrox.standardLibraryRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the std source directory for standard-library authoring mode. Restart after changing."
+        },
+        "syrox.inlayHints.types": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inferred local and pattern types."
+        },
+        "syrox.inlayHints.parameters": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show parameter names at call sites."
+        },
+        "syrox.inlayHints.ownership": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show affine consumption and closure captures."
+        }
       }
     },
-    "configurationDefaults": { "[syrox]": { "editor.semanticHighlighting.enabled": true, "editor.inlayHints.enabled": "on" } }
+    "configurationDefaults": {
+      "[syrox]": {
+        "editor.semanticHighlighting.enabled": true,
+        "editor.inlayHints.enabled": "on"
+      }
+    }
+  },
+  "devDependencies": {
+    "@vscode/vsce": "3.7.1"
   }
 }

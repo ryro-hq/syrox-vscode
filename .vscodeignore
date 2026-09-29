@@ -5,3 +5,5 @@ package-lock.json
 **/*.md
 **/*.vsix
 **/*.log
+*.test.cjs
+.vscode-test/**
