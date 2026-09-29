@@ -28,6 +28,7 @@
   "main": "./extension.js",
   "scripts": {
     "check": "node --check extension.js && node --test extension.test.cjs",
+    "test:host": "node tests/host/launch.cjs",
     "package": "vsce package --out syrox.vsix"
   },
   "dependencies": {
@@ -93,6 +94,7 @@
     }
   },
   "devDependencies": {
+    "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "3.7.1"
   }
 }
